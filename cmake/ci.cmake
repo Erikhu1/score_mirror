@@ -82,11 +82,11 @@ include(clang_flags)
 include(gcc_flags)
 
 add_custom_target(ci_test_gcc
+    COMMAND mkdir -p unit_tests_results
     COMMAND CXX=${GCC_TOOL} CXXFLAGS="${GCC_CXXFLAGS}" ${CMAKE_COMMAND}
         -DCMAKE_BUILD_TYPE=Debug -GNinja
         -DJSON_BuildTests=ON
         -S${PROJECT_SOURCE_DIR} -B${PROJECT_BINARY_DIR}/build_gcc
-        -mkdir -p unit_tests_results
     COMMAND ${CMAKE_COMMAND} --build ${PROJECT_BINARY_DIR}/build_gcc
     COMMAND cd ${PROJECT_BINARY_DIR}/build_gcc && ${CMAKE_CTEST_COMMAND} --parallel ${N} --output-on-failure > unit_tests_results/unit_tests_results.log
     COMMENT "Compile and test with GCC using maximal warning flags"
