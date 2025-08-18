@@ -2,7 +2,6 @@ from typing import TypeAlias, Tuple, List
 import os
 import requests
 
-yaml: TypeAlias = str | int | float | list["yaml"] | dict[str, "yaml"]
 
 def setup_environment_variables() -> dict[str, str]:
     """
@@ -17,6 +16,8 @@ def setup_environment_variables() -> dict[str, str]:
         raise RuntimeError(f"Missing required environment variables: {', '.join(missing_vars)}")
     
     return environment
+
+yaml: TypeAlias = str | int | float | list["yaml"] | dict[str, "yaml"]
 
 def check_artifact_exists(configuration: dict[str, yaml]) -> Tuple[float, List[Exception | Warning]]:    
     # Setup environment variables using the helper function
