@@ -82,7 +82,7 @@ include(clang_flags)
 include(gcc_flags)
 
 add_custom_target(ci_test_gcc
-    COMMAND mkdir -p unit_tests_results
+    COMMAND mkdir -p ${PROJECT_BINARY_DIR}/unit_tests_results
     COMMAND CXX=${GCC_TOOL} CXXFLAGS="${GCC_CXXFLAGS}" ${CMAKE_COMMAND}
         -DCMAKE_BUILD_TYPE=Debug -GNinja
         -DJSON_BuildTests=ON
