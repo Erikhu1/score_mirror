@@ -2,7 +2,6 @@ from typing import TypeAlias, tuple, list
 import os
 import requests
 
-yaml: TypeAlias = str | int | float | list["yaml"] | dict[str, "yaml"]
 
 def setup_environment_variables() -> dict[str, str]:
     """
@@ -19,6 +18,7 @@ def setup_environment_variables() -> dict[str, str]:
     return environment
 
 def check_artifact_exists(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:    
+
     # Setup environment variables using the helper function
     env = setup_environment_variables()
     
