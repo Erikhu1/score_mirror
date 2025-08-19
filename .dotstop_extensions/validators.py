@@ -4,7 +4,21 @@ import requests
 
 yaml: TypeAlias = str | int | float | list["yaml"] | dict[str, "yaml"]
 
-def check_artifact_exists(configuration: dict[str, yaml]) -> Tuple[float, List[Exception | Warning]]:    
+def setup_environment_variables() -> dict[str, str]:
+    """
+    Retrieves and validates the necessary environment variables for GitHub workflows.
+    Raises a RuntimeError if any required variables are missing.
+    """
+    required_vars = ["GITHUB_TOKEN", "GITHUB_EVENT_NAME", "GITHUB_RUN_ID", "GITHUB_REPOSITORY", "GITHUB_SHA"]
+    environment = {var: os.getenv(var) for var in required_vars}
+    
+    missing_vars = [var for var, value in environment.items() if not value]
+    if missing_vars:
+        raise RuntimeError(f"Missing required environment variables: {', '.join(missing_vars)}")
+    
+    return environment
+
+def check_artifact_exists(configuration: dict[str, yaml]) -> tuple[float, list[Exception | Warning]]:    
     # Setup environment variables using the helper function
     env = setup_environment_variables()
     
@@ -60,18 +74,3 @@ def check_artifact_exists(configuration: dict[str, yaml]) -> Tuple[float, List[E
                 print(f"Artifact for workflow {key} NOT found. Current cumulative score: {score}")
 
     return (score, [])
-
-
-def setup_environment_variables() -> dict[str, str]:
-    """
-    Retrieves and validates the necessary environment variables for GitHub workflows.
-    Raises a RuntimeError if any required variables are missing.
-    """
-    required_vars = ["GITHUB_TOKEN", "GITHUB_EVENT_NAME", "GITHUB_RUN_ID", "GITHUB_REPOSITORY", "GITHUB_SHA"]
-    environment = {var: os.getenv(var) for var in required_vars}
-    
-    missing_vars = [var for var, value in environment.items() if not value]
-    if missing_vars:
-        raise RuntimeError(f"Missing required environment variables: {', '.join(missing_vars)}")
-    
-    return environment
