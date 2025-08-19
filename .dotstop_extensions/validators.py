@@ -2,6 +2,7 @@ from typing import TypeAlias, tuple, list
 import os
 import requests
 
+yaml: TypeAlias = str | int | float | list["yaml"] | dict[str, "yaml"]
 
 def setup_environment_variables() -> dict[str, str]:
     """
