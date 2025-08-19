@@ -34,10 +34,8 @@ def check_artifact_exists(configuration: dict[str, yaml]) -> tuple[float, list[E
     # Determine the number of expected workflows based on the event type
     if github_event_name != "pull_request" and configuration.get("dependency_review") is not None:
         num_expected_workflows = len(configuration) - 1  # Exclude dependency review if not a PR
-        print("num_expected_workflows:", len(configuration), " -1 for dependency_review")
     else: 
         num_expected_workflows = len(configuration)
-        print("num_expected_workflows:", len(configuration))
 
 
     # GitHub API URL to list artifacts for the current workflow run
