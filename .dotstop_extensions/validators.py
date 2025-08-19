@@ -3,7 +3,7 @@ import os
 import requests
 
 yaml: TypeAlias = str | int | float | list["yaml"] | dict[str, "yaml"]
-#test
+
 def setup_environment_variables() -> dict[str, str]:
     """
     Retrieves and validates the necessary environment variables for GitHub workflows.
