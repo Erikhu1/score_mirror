@@ -9,7 +9,7 @@ on:
     - cron: '0 0 * * *' # Runs daily at midnight UTC
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   pull-requests: write
   id-token: write
