@@ -124,6 +124,8 @@ jobs:
           path: artifacts/
 
   publish_documentation_pr:
+    permmissions:
+      contents:write
     name: Run publish_documentation Workflow pr
     if: github.event_name == 'pull_request'
     needs: [collect_artifacts_pr]
