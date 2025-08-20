@@ -10,9 +10,6 @@ on:
 
 permissions:
   contents: read
-  id-token: write
-  security-events: write
-
 
 jobs:
   labeler:
@@ -128,6 +125,8 @@ jobs:
       contents: write
       pages: write
       pull-requests: write
+      id-token: write
+      security-events: write
     name: Run publish_documentation Workflow pr
     if: github.event_name == 'pull_request'
     needs: [collect_artifacts_pr]
@@ -140,6 +139,8 @@ jobs:
       contents: write
       pages: write
       pull-requests: write
+      id-token: write
+      security-events: write
     name: Run publish_documentation Workflow non pr
     if: github.event_name != 'pull_request'
     needs: [collect_artifacts_non_pr]
