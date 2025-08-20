@@ -123,7 +123,7 @@ jobs:
     permissions:
       contents: write
       pages: write
-    pull-requests: write
+      pull-requests: write
     name: Run publish_documentation Workflow pr
     if: github.event_name == 'pull_request'
     needs: [collect_artifacts_pr]
