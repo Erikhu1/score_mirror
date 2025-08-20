@@ -29,6 +29,9 @@ jobs:
       artifact_id: "check_amalgamation-${{ github.sha }}"
       
   test_trudag_extensions:
+    permissions:
+      contents: write
+      pull-requests: write
     name: Run Test Trudag Extensions Workflow
     uses: ./.github/workflows/test_trudag_extensions.yml
     with:
