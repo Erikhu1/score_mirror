@@ -16,6 +16,10 @@ permissions:
 
 jobs:
   labeler:
+    permissions:
+      contents: write
+      pages: write
+      pull-requests: write
     name: Run Labeler Workflow
     uses: ./.github/workflows/labeler.yml
     with:
