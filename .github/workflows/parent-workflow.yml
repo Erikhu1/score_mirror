@@ -82,7 +82,7 @@ jobs:
           current_workflow: ${{ matrix.target }}
 
       - name: Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: "${{ matrix.target }}-${{ github.sha }}"
           path: artifacts/
@@ -115,7 +115,7 @@ jobs:
           current_workflow: ${{ matrix.target }}
 
       - name: Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: "${{ matrix.target }}-${{ github.sha }}"
           path: artifacts/
