@@ -79,7 +79,7 @@ jobs:
 
       # only this step is different from the original workflow
       - name: Download trudag report artifact
-        uses: actions/download-artifact@v4.1.8
+        uses: actions/download-artifact@v5
         with:
           name: trudag-report-${{ github.event.pull_request.head.sha || github.sha }}
           path: TSF/docs/generated/
@@ -163,7 +163,7 @@ jobs:
         uses: actions/checkout@v4.2.2
 
       - name: Download documentation artifact
-        uses: actions/download-artifact@v4.1.8
+        uses: actions/download-artifact@v5
         with:
           name: github-pages-${{ github.event.pull_request.head.sha || github.sha }}
 
